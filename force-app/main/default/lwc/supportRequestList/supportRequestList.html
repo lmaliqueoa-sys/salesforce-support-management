@@ -1,17 +1,28 @@
+
 <template>
     <lightning-card title="Solicitudes de soporte">
-        <template lwc:if={requests.data}>
-            <lightning-datatable
-                key-field="Id"
-                data={requests.data}
-                columns={columns}>
-            </lightning-datatable>
+
+        <template lwc:if={hasData}>
+            <template lwc:if={isEmpty}>
+                <div class="slds-p-around_medium">
+                    No existen solicitudes registradas.
+                </div>
+            </template>
+
+            <template lwc:else>
+                <lightning-datatable
+                    key-field="Id"
+                    data={requests}
+                    columns={columns}>
+                </lightning-datatable>
+            </template>
         </template>
 
-        <template lwc:if={requests.error}>
+        <template lwc:if={hasError}>
             <div class="slds-p-around_medium">
-                Error al cargar las solicitudes.
+                No se pudieron cargar las solicitudes.
             </div>
         </template>
+
     </lightning-card>
 </template>

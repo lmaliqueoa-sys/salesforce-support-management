@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Solicitudes de soporte">
+        <template lwc:if={requests.data}>
+            <lightning-datatable
+                key-field="Id"
+                data={requests.data}
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+
+        <template lwc:if={requests.error}>
+            <div class="slds-p-around_medium">
+                Error al cargar las solicitudes.
+            </div>
+        </template>
+    </lightning-card>
+</template>
